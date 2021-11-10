@@ -16,3 +16,14 @@
 """
 
 mac = "AAAA:BBBB:CCCC"
+
+# mac = mac.split(':')
+# mac = bin(int(mac[0], 16))+bin(int(mac[1], 16))+bin(int(mac[2], 16))
+# mac = mac.replace('0b', '')
+
+mac = bin(int(mac.replace(':', ''), 16))
+mac = mac.replace('0b', '')
+
+#bin_mac = "{:b}".format(int(mac.replace(":", ""), 16))
+
+print(mac)

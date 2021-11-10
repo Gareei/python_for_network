@@ -16,3 +16,10 @@
 """
 
 nat = "ip nat inside source list ACL interface FastEthernet0/1 overload"
+
+print (nat.replace('FastEthernet0','GigabitEthernet0'))
+
+#pytest test_task_4_1.py
+#pyneng 1 
+#pyneng 1 -a
+
