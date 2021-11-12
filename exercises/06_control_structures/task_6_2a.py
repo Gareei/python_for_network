@@ -19,16 +19,18 @@
 """
 
 ip_address = input("введите ip-адрес: ")
+list_ip_addr = ip_address.split('.')
 
-check = 0
-if ip_address.count('.') == 3:
-    list_ip_addr = ip_address.split('.')
+check = True
+if len(list_ip_addr) == 4:
     for item in list_ip_addr:
-        if item.isdigit() and not item.isalpha() and int(item) in range(256):
-            # if 0 <= int(item) <= 255:
-            check += 1
+        if not (item.isdigit() and not item.isalpha() and int(item) in range(0, 256)):
+            check = False
+            break
+else:
+    check = False
 
-if check < 4:
+if check == False:
     print('Неправильный IP-адрес')
 else:
     oct1 = int(ip_address.split(".")[0])
