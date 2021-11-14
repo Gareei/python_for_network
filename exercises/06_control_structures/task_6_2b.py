@@ -40,3 +40,17 @@ else:
         print("multicast")
     else:
         print("unused")
+
+sum = 0
+num = []
+for item in range(1, 20):
+    if item % 2 != 0:
+        num.append(4/item)
+
+for item in range(0, len(num)):
+    if item % 2 == 0:
+        sum += num[item]
+    if item % 2 != 0:
+        sum -= num[item]
+
+print(sum)

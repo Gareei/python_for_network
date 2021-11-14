@@ -20,17 +20,10 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
-with open('CAM_table.txt') as f:
-    for line in f:
-        if 'DYNAMIC' in line:
-            line = line.split()
-            print("{}   {}  {}".format(line[0], line[1], line[3]))
-            # print(line)
 
-
-# with open("CAM_table.txt") as conf:
-#     for line in conf:
-#         words = line.split()
-#         if words and words[0].isdigit():
-#             vlan, mac, _, interface = words
-#             print(f"{vlan:9}{mac:20}{interface}")
+with open("CAM_table.txt") as conf:
+    for line in conf:
+        words = line.split()
+        if words and words[0].isdigit():
+            vlan, mac, _, interface = words
+            print(f"{vlan:9}{mac:20}{interface}")
