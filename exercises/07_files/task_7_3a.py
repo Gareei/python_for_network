@@ -40,3 +40,18 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+line_sort = []
+
+with open('CAM_table.txt') as f:
+    for line in f:
+        line = line.split()
+        if line and line[0].isdigit():
+            line[0] = int(line[0])
+            line_sort.append(line)
+            # print("{:9}{:20}{}".format(line[0], line[1], line[3]))
+line_sort.sort()
+# print(line_sort)
+
+for line in line_sort:
+    # print("{:4}{:20}{}".format(line[0], line[1], line[3]))
+    print(f"{line[0]:<9}{line[1]:20}{line[3]}")
