@@ -23,11 +23,5 @@ vlan = int(input("Введите Vlan: "))
 with open('CAM_table.txt') as f:
     for line in f:
         line = line.split()
-        if line and line[0].isdigit():
-            line[0] = int(line[0])
-            line_sort.append(line)
-line_sort.sort()
-
-for line in line_sort:
-    if line[0] == vlan:
-        print(f"{line[0]:<9}{line[1]:20}{line[3]}")
+        if line and line[0].isdigit() and int(line[0]) == vlan:
+            print(f"{line[0]:<9}{line[1]:20}{line[3]}")
