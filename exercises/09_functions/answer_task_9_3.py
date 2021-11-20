@@ -24,44 +24,17 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
 
-from sys import argv
-
-
 def get_int_vlan_map(config_filename):
-    port_access = {}
-    port_trunk = {}
-    with open(config_filename, "r") as conf:
-        for line in conf:
-            if "interface FastEthernet" in line:
-                fa = line.split()[-1]
+    access_dict = {}
+    trunk_dict = {}
 
-            if "access vlan" in line:
-                pa = line.split()[-1]
-                port_access[fa] = int(pa)
-
-            if "trunk allowed vlan" in line:
-                ta = line.split()[-1]
-                # ta = [int(s) for s in ta.split(',')]
-                ta = list(map(int, ta.split(',')))
-                port_trunk[fa] = ta
-
-    return port_access, port_trunk
-
-
-# def get_int_vlan_map(config_filename):
-#     access_dict = {}
-#     trunk_dict = {}
-
-#     with open(config_filename) as cfg:
-#         for line in cfg:
-#             line = line.rstrip()
-#             if line.startswith("interface"):
-#                 intf = line.split()[1]
-#             elif "access vlan" in line:
-#                 access_dict[intf] = int(line.split()[-1])
-#             elif "trunk allowed" in line:
-#                 trunk_dict[intf] = [int(v) for v in line.split()[-1].split(",")]
-#         return access_dict, trunk_dict
-
-
-# print(get_int_vlan_map(argv[1]))
+    with open(config_filename) as cfg:
+        for line in cfg:
+            line = line.rstrip()
+            if line.startswith("interface"):
+                intf = line.split()[1]
+            elif "access vlan" in line:
+                access_dict[intf] = int(line.split()[-1])
+            elif "trunk allowed" in line:
+                trunk_dict[intf] = [int(v) for v in line.split()[-1].split(",")]
+        return access_dict, trunk_dict

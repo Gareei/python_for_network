@@ -1,0 +1,33 @@
+
+Current configuration : 2033 bytes
+!
+! Last configuration change at 13:11:59 UTC Thu Feb 25 2016
+!
+version 15.0
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname sw1
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ switchport mode access
+ switchport access vlan 10
+ duplex auto
+!
+interface FastEthernet0/1
+ switchport trunk encapsulation dot1q
+ switchport trunk allowed vlan 100,200
+ switchport mode trunk
+ duplex auto
+!

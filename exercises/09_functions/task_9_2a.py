@@ -66,6 +66,5 @@ def generate_trunk_config(intf_vlan_mapping, trunk_template):
 a = generate_trunk_config(trunk_config, trunk_mode_template)
 print(a)
 
-
-L = list(map(int, input().split()))
-print(L)
+# a = [10,20,30]
+# print(",".join([str(vl) for vl in a]))

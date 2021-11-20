@@ -45,7 +45,6 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
 
-from sys import argv
 ignore = ["duplex", "alias", "configuration"]
 
 
@@ -68,23 +67,15 @@ def ignore_command(command, ignore):
 
 
 def convert_config_to_dict(config_filename):
-    config_dic = {}
-
-    with open(config_filename, "r") as conf:
-        for line in conf:
-
-            if not line.startswith("!") and not ignore_command(line, ignore):
-
+    config_dict = {}
+    with open(config_filename) as f:
+        for line in f:
+            line = line.rstrip()
+            if line and not (line.startswith("!") or ignore_command(line, ignore)):
                 if line[0].isalnum():
-                    keys = line.strip()
-                    command = []
-                    config_dic[keys] = command
+                    section = line
+                    config_dict[section] = []
+                else:
+                    config_dict[section].append(line.strip())
+    return config_dict
 
-                if line.startswith("\s"):
-                    command.append(line.strip())
-                    config_dic[keys] = command
-
-    return config_dic
-
-
-print(convert_config_to_dict(argv[1]))
