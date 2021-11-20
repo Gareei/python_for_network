@@ -11,26 +11,6 @@
 
 Проверить работу функции на примере словаря trunk_config и шаблона trunk_mode_template.
 
-Пример итогового словаря, который должна возвращать функция (перевод строки
-после каждого элемента сделан для удобства чтения):
-{
-    "FastEthernet0/1": [
-        "switchport mode trunk",
-        "switchport trunk native vlan 999",
-        "switchport trunk allowed vlan 10,20,30",
-    ],
-    "FastEthernet0/2": [
-        "switchport mode trunk",
-        "switchport trunk native vlan 999",
-        "switchport trunk allowed vlan 11,30",
-    ],
-    "FastEthernet0/4": [
-        "switchport mode trunk",
-        "switchport trunk native vlan 999",
-        "switchport trunk allowed vlan 17",
-    ],
-}
-
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
@@ -48,24 +28,15 @@ trunk_config = {
     "FastEthernet0/4": [17],
 }
 
-
 def generate_trunk_config(intf_vlan_mapping, trunk_template):
-    trunk_config = {}
-    for fa, vlan in intf_vlan_mapping.items():
+    trunk_conf = {}
+    for port, vlans in intf_vlan_mapping.items():
         commands = []
         for command in trunk_template:
             if command.endswith("allowed vlan"):
-                commands.append(
-                    f"{command} {','.join([str(vl) for vl in vlan])}")
+                vlans_str = ",".join([str(vl) for vl in vlans])
+                commands.append(f"{command} {vlans_str}")
             else:
                 commands.append(command)
-        trunk_config[fa] = commands
-    return trunk_config
-
-
-a = generate_trunk_config(trunk_config, trunk_mode_template)
-print(a)
-
-
-L = list(map(int, input().split()))
-print(L)
+        trunk_conf[port] = commands
+    return trunk_conf

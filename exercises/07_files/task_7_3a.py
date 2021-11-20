@@ -55,3 +55,16 @@ line_sort.sort()
 for line in line_sort:
     # print("{:4}{:20}{}".format(line[0], line[1], line[3]))
     print(f"{line[0]:<9}{line[1]:20}{line[3]}")
+
+
+# mac_table = []
+
+# with open("CAM_table.txt", "r") as conf:
+#     for line in conf:
+#         words = line.split()
+#         if words and words[0].isdigit():
+#             vlan, mac, _, intf = words
+#             mac_table.append([int(vlan), mac, intf])
+
+# for vlan, mac, intf in sorted(mac_table):
+#     print(f"{vlan:<9}{mac:20}{intf}")
