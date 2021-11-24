@@ -34,3 +34,33 @@ infiles = [
     "sh_cdp_n_r2.txt",
     "sh_cdp_n_r3.txt",
 ]
+
+result = {}
+
+
+def parse_cdp_neighbors(command_output):
+    """
+    Тут мы передаем вывод команды одной строкой потому что именно в таком виде будет
+    получен вывод команды с оборудования. Принимая как аргумент вывод команды,
+    вместо имени файла, мы делаем функцию более универсальной: она может работать
+    и с файлами и с выводом с оборудования.
+    Плюс учимся работать с таким выводом.
+    """
+
+    for line in command_output.split("\n"):
+        line = line.strip()
+        if ">" in line:
+            hostname = line.split(">")[0]
+        columms = line.split()
+        if len(columms) >= 8 and columms[3].isdigit():
+            d_id, l, _intf, *other, p, _id = columms
+            result[(hostname, l+_intf)] = (d_id, p+_id)
+
+    return result
+
+
+if __name__ == "__main__":
+    for file_name in infiles:
+        with open(file_name) as f:
+            parse_cdp_neighbors(f.read())
+print(result)

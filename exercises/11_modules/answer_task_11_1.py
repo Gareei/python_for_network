@@ -46,13 +46,13 @@ def parse_cdp_neighbors(command_output):
     result = {}
     for line in command_output.split("\n"):
         line = line.strip()
+        columns = line.split()
         if ">" in line:
             hostname = line.split(">")[0]
-        columms = line.split()
-        if len(columms) >= 8 and columms[3].isdigit():
-            d_id, l, _intf, *other, p, _id = columms
-            result[(hostname, l+_intf)] = (d_id, p+_id)
-
+        # 3 индекс это столбец holdtime - там всегда число
+        elif len(columns) >= 5 and columns[3].isdigit():
+            r_host, l_int, l_int_num, *other, r_int, r_int_num = columns
+            result[(hostname, l_int + l_int_num)] = (r_host, r_int + r_int_num)
     return result
 
 

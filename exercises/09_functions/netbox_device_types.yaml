@@ -1,0 +1,44 @@
+manufacturer: Allied Telesis
+model: AT-8024
+slug: at-8024
+part_number: ''
+u_height: 1
+is_full_depth: false
+subdevice_role: ''
+comments: ''
+---
+manufacturer: Allied Telesis
+model: AT-8648/2SP
+slug: at-86482sp
+part_number: ''
+u_height: 1
+is_full_depth: false
+subdevice_role: ''
+comments: ''
+---
+manufacturer: AMP Netconnect
+model: 24port5e-pp
+slug: 24port5e-pp
+part_number: 24port5e-pp
+u_height: 1
+is_full_depth: false
+subdevice_role: ''
+comments: ''
+---
+manufacturer: AMP Netconnect
+model: 48port5e-pp
+slug: 48port5e-pp
+part_number: ''
+u_height: 1
+is_full_depth: false
+subdevice_role: ''
+comments: ''
+---
+manufacturer: APC
+model: AP5816 16 Port LCD KVM Switch
+slug: ap5816-16-port-lcd-kvm-switch
+part_number: ''
+u_height: 1
+is_full_depth: false
+subdevice_role: ''
+comments: ''
